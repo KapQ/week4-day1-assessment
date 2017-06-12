@@ -10,7 +10,7 @@ It should return the date for Indepencence Day.
 **************************************************************************************/
 ( function() {
   "use strict";
-
+var date = new Date("Thu Jul 04 1776 00:00:00 GMT-0400 (EDT)")
   //Your code here.
 
   console.log( "Independence Day date: ", date );
@@ -26,7 +26,7 @@ It should return new year's day for 2018.
 **************************************************************************************/
 ( function() {
   "use strict";
-
+var date =new Date(2018, 0, 1);
   //Your code here.
 
 console.log( "Happy new year!: ", date );
@@ -43,7 +43,7 @@ See assertion for date and time.
 **************************************************************************************/
 ( function() {
   "use strict";
-
+var date = new Date("Oct 13 1975 11:13:00 GMT-0400 (EDT)");
   //Your code here.
 
   console.log( "Day and time: ", date );
@@ -59,8 +59,9 @@ HINT: you will need to use 'getFullYear()' for one of the variables.
 **************************************************************************************/
 ( function() {
   "use strict";
-
+var date = new Date()
 //date variable here
+var year = date.getFullYear();
 //year variable here
 
   console.log( "Current year: ", year );
@@ -81,7 +82,7 @@ It should round a the `num` variable to be 184. Use the appropiate math method.
 
 //Your code here
 const num = 184.33;
-
+var roundNum = Math.round(184.33)
  console.log( "roundNum: ", roundNum );
  console.assert( roundNum == "184", "#5: Test failed. Check your math method and parameters. Return: " + roundNum )
 } )();
@@ -95,7 +96,7 @@ It should return 256. Use the appropiate math method.
 **************************************************************************************/
 ( function() {
   "use strict";
-
+var power = Math.pow(4, 4);
   //Your code here.
 
   console.log( "power: ", power );
@@ -119,6 +120,7 @@ Edit the following object using dot notation to 'add' the missing computer compo
     processor: "i-7",
     memory: "4GB",
   };
+  computer.GPU = "nvidia"
  //Add missing property here.
   console.log( "#10: computer", computer )
   console.assert( computer.GPU == "nvidia", "Test failed. The computer should have an 'nvidia' GPU" )
@@ -134,7 +136,12 @@ The following object is empty. Use bracket notation so that 'car' has two doors,
 ( function() {
   "use strict";
   var car = {};
-
+car["doors"] = 2;
+car["wheels"] = 4;
+car["engine"] = true;
+car["type"] = "sport";
+car["engine-size"] = "v-8";
+car["model"] = "mustang";
 //Add properties here.
 
   console.log( "#11: ", car )
@@ -205,14 +212,16 @@ Where should 'multiply()' go?
   "use strinct";
 
   function hoistThis() {
-    function multiply( sum ) {
-      console.assert( sum * 2 == "8", "#9: Test failed. Check your function hoisting" );
-      return sum * 2;
-    }
-    multiply( sum );
-    console.assert( sum == "4", "#9: Test failed. Check hoisting" );
     var sum;
     sum = 2 + 2;
+    console.assert( sum * 2 == "8", "#9: Test failed. Check your function hoisting" );
+      return sum * 2;
+    }
+    function multiply( sum ) {
+    multiply( sum );
+    console.assert( sum == "4", "#9: Test failed. Check hoisting" );
+
+
   };
   hoistThis();
 } )();
